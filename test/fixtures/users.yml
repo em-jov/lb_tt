@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+first:
+  id: 1
+  username: 'first_user'
+  password_digest: <%= BCrypt::Password.create('test') %>
+  login_failure_count: 0
+
+second:
+  id: 2
+  username: 'second_user'
+  password_digest: <%= BCrypt::Password.create('test') %>
+  login_failure_count: 2
