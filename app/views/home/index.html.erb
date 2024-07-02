@@ -1,0 +1,11 @@
+<h1>Hello! </h1>
+<% if current_user %>
+  <p> 
+    Welcome <%= current_user.username %> :)
+  </p>
+  <div>
+    <%= button_to 'Log out', session_path(id: current_user.id), method: :delete %>
+  </div>
+<% else %>
+  <%= link_to 'Log in', new_session_path %>
+<% end %>

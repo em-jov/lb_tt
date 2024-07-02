@@ -1,23 +1,26 @@
 require "test_helper"
 
 class UserTest < ActiveSupport::TestCase
-  test 'valid user' do
-    user = users(:second)
-    assert user.valid?
+  def setup
+    @user = users(:first)
+  end
+  
+  test 'should be valid with valid attributes' do
+    assert @user.valid?
   end
 
-  test 'invalid without username' do
-    user = User.new(username: nil, password: 'test')
+  test "should be invalid if username is not present" do
+    @user.username = ""
+    refute @user.valid?
+  end
+
+  test "should be invalid if username is not unique" do
+    user = User.new(username: @user.username, password: 'xyz')
     refute user.valid?
   end
 
-  test 'invalid without password' do
-    user = User.new(username: 'third_user', password: nil)
-    refute user.valid?
-  end
-
-  test 'invalid without uniqe username' do
-    user = User.new(username: 'first_user', password: 'test')
-    refute user.valid?
+  test 'should be invalid if password is not present' do
+    @user.password = nil
+    refute @user.valid?
   end
 end
