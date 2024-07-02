@@ -13,7 +13,7 @@ class SessionsController < ApplicationController
       user.login_failure_count = 0
       user.save
       session[:user_id] = user.id 
-      redirect_to root_path, notice: 'Logged in successfully'
+      redirect_to root_path, notice: 'You have logged in.'
     else
       user&.login_failure_count += 1
       user&.save
@@ -24,6 +24,6 @@ class SessionsController < ApplicationController
 
   def destroy
     reset_session
-    redirect_to root_path, notice: 'Logged out!'
+    redirect_to root_path, notice: 'You have been logged out.'
   end
 end
