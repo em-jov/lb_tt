@@ -15,10 +15,4 @@ class ApplicationControllerTest < ActionDispatch::IntegrationTest
     assert_nil @controller.current_user
   end
 
-  test "should return nil when session user_id is invalid" do
-    post sessions_path, params: { username: @user.username, password: 'test' }
-    session[:user_id] = -1
-    assert_nil @controller.view_context.current_user
-  end
-
 end

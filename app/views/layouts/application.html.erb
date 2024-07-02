@@ -12,7 +12,7 @@
   <body>
     <header>
       <% flash.each do |type, msg| %>
-        <div>
+        <div class="<%= type %>">
           <%= msg %>
         </div>
       <% end %>
